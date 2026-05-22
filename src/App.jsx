@@ -2,6 +2,14 @@ import { useState } from 'react'
 import './App.css'
 import languages from './languages.js'
 function App() {
+  const [word, setWord] = useState("currentWord")
+  const wordToGuess = [...word]
+  const alphabet = [..."abcdefghijklmnopqrstuvwxyz"]
+
+  const wordMapped = wordToGuess.map((letter) => (
+    <p className='letter'>{letter.toUpperCase()}</p>
+  ))
+  
   const CODING_LANGUAGES = languages.map((language) => (<div
     key={language.name}
     className='language_name' 
@@ -25,6 +33,9 @@ function App() {
       </div>
       <div className='coding-languages'> 
         {CODING_LANGUAGES}
+      </div>
+      <div className='word-to-guess'>
+        {wordMapped}
       </div>
       
     </>

@@ -47,3 +47,22 @@ header p {
     padding: 5px;
     border-radius: 5px;
 }
+
+.word-to-guess {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin: 2px;
+    background-color: #323232;
+    border-bottom: 1px solid #F9F4DA;
+}
