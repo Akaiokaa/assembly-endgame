@@ -5,11 +5,14 @@ function App() {
   const [word, setWord] = useState("currentWord")
   const wordToGuess = [...word]
   const alphabet = [..."abcdefghijklmnopqrstuvwxyz"]
-
-  const wordMapped = wordToGuess.map((letter) => (
-    <p className='letter'>{letter.toUpperCase()}</p>
+  const alphabetMapped = alphabet.map((letter) => (
+    <button className='alphabet-Letter' key={letter}> {letter}</button>
   ))
-  
+
+  const wordMapped = wordToGuess.map((letter, index) => (
+    <p className='letter' key={index}>{letter.toUpperCase()}</p>
+  ))
+
   const CODING_LANGUAGES = languages.map((language) => (<div
     key={language.name}
     className='language_name' 
@@ -37,7 +40,10 @@ function App() {
       <div className='word-to-guess'>
         {wordMapped}
       </div>
-      
+      <div className='key-board'>
+        {alphabetMapped}
+      </div>
+      <button className='new-game'>New Game</button>
     </>
   )
 }
