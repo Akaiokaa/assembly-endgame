@@ -4,6 +4,10 @@ import languages from './languages.js'
 function App() {
   const [word, setWord] = useState("CURRENTWORD")
   const [guessedLetters, setguessedLetters] = useState([])
+
+  const wrongCount = guessedLetters.filter(letter => !word.includes(letter)).length
+  console.log(wrongCount)
+
   console.log(guessedLetters)
   const wordToGuess = [...word]
   const alphabet = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
@@ -11,8 +15,8 @@ function App() {
     const letterCleaned = letter.toLowerCase
     let backGroundColor = ""
     const isGuessed = guessedLetters.includes(letter)
-    const isCorrect = isGuessed && word.includes(letter) ? backGroundColor = "#00FF00" : null
-    const isWrong = isGuessed && !word.includes(letter)  ? backGroundColor = "#FF0000" : null
+    const isCorrect = isGuessed && word.includes(letter) ? backGroundColor = "#10A95B" : null
+    const isWrong = isGuessed && !word.includes(letter)  ? backGroundColor = "#EC5D49" : null
 
     return (
     <button 
