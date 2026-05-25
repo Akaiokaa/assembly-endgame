@@ -2,23 +2,33 @@ import { useState } from 'react'
 import './App.css'
 import languages from './languages.js'
 function App() {
-  const [word, setWord] = useState("currentWord")
-  const [guessedLetter, setguessedLetter] = useState([])
-  console.log(guessedLetter)
+  const [word, setWord] = useState("CURRENTWORD")
+  const [guessedLetters, setguessedLetters] = useState([])
+  console.log(guessedLetters)
   const wordToGuess = [...word]
-  const alphabet = [..."abcdefghijklmnopqrstuvwxyz"]
-  const alphabetMapped = alphabet.map((letter) => (
+  const alphabet = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+  const alphabetMapped = alphabet.map((letter) => {
+    const letterCleaned = letter.toLowerCase
+    let backGroundColor = ""
+    const isGuessed = guessedLetters.includes(letter)
+    const isCorrect = isGuessed && word.includes(letter) ? backGroundColor = "#00FF00" : null
+    const isWrong = isGuessed && !word.includes(letter)  ? backGroundColor = "#FF0000" : null
+
+    return (
     <button 
-      className='alphabet-Letter' 
+      className='alphabet-Letter'
+      style={{"backgroundColor": backGroundColor}}
       key={letter}
-      onClick={ () => setguessedLetter((prev) => prev.includes(letter) ? prev :  [...prev, letter]) }
-      > 
+      onClick={ () => setguessedLetters((prev) => prev.includes(letter) ? prev :  [...prev, letter]) }
+    > 
       {letter}
-    </button>
-  ))
+    </button>)
+      
+    }
+  )
 
   const wordMapped = wordToGuess.map((letter, index) => (
-    <p className='letter' key={index}>{letter.toUpperCase()}</p>
+    <p className='letter' key={index}>{ guessedLetters.includes(letter) ? letter : ""}</p>
   ))
 
   const CODING_LANGUAGES = languages.map((language) => (<div
