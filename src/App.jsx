@@ -3,10 +3,18 @@ import './App.css'
 import languages from './languages.js'
 function App() {
   const [word, setWord] = useState("currentWord")
+  const [guessedLetter, setguessedLetter] = useState([])
+  console.log(guessedLetter)
   const wordToGuess = [...word]
   const alphabet = [..."abcdefghijklmnopqrstuvwxyz"]
   const alphabetMapped = alphabet.map((letter) => (
-    <button className='alphabet-Letter' key={letter}> {letter}</button>
+    <button 
+      className='alphabet-Letter' 
+      key={letter}
+      onClick={ () => setguessedLetter((prev) => prev.includes(letter) ? prev :  [...prev, letter]) }
+      > 
+      {letter}
+    </button>
   ))
 
   const wordMapped = wordToGuess.map((letter, index) => (
