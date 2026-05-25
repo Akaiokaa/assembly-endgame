@@ -98,6 +98,10 @@ header p {
     cursor: pointer;
 }
 
+.language_name {
+    position: relative;
+}
+
 .language_name.lost::before {
     content: "💀";
     position: absolute;
