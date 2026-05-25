@@ -35,13 +35,21 @@ function App() {
     <p className='letter' key={index}>{ guessedLetters.includes(letter) ? letter : ""}</p>
   ))
 
-  const CODING_LANGUAGES = languages.map((language) => (<div
-    key={language.name}
-    className='language_name' 
-    style={{
-    "background-color": language.backgroundColor,
-    color: language.color
-  }}>{language.name}</div>))
+  const CODING_LANGUAGES = languages.map((language, index) => {
+    const isLanguageLost = index < wrongCount;
+    return (
+    <div
+      key={language.name}
+      className={`language_name ${isLanguageLost ? 'lost': ""}`}
+      style={{
+      "background-color": language.backgroundColor,
+      color: language.color
+    }}>
+      {language.name}
+    </div>
+    )}
+   
+  )
 
   console.log(languages)
   return (
